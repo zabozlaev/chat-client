@@ -28,7 +28,7 @@ export default {};
   align-items: center;
   padding: 0 0 0 25px;
   height: 100%;
-  max-height: 100px;
+  max-height: 70px;
 
   &__avatar {
     border-radius: 50%;

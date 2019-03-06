@@ -50,6 +50,96 @@
           </div>
           <div class="dialogs-list__item-tag"></div>
         </div>
+        <div class="dialogs-list__item">
+          <div class="dialogs-list__item-avatar"></div>
+          <div class="dialogs-list__item-content">
+            <div class="dialogs-list__item-name">John</div>
+            <div class="dialogs-list__item-time">09:55</div>
+            <div class="dialogs-list__item-message">{{ message | messagePreview}}</div>
+          </div>
+          <div class="dialogs-list__item-tag"></div>
+        </div>
+        <div class="dialogs-list__item">
+          <div class="dialogs-list__item-avatar"></div>
+          <div class="dialogs-list__item-content">
+            <div class="dialogs-list__item-name">John</div>
+            <div class="dialogs-list__item-time">09:55</div>
+            <div class="dialogs-list__item-message">{{ message | messagePreview}}</div>
+          </div>
+          <div class="dialogs-list__item-tag"></div>
+        </div>
+        <div class="dialogs-list__item">
+          <div class="dialogs-list__item-avatar"></div>
+          <div class="dialogs-list__item-content">
+            <div class="dialogs-list__item-name">John</div>
+            <div class="dialogs-list__item-time">09:55</div>
+            <div class="dialogs-list__item-message">{{ message | messagePreview}}</div>
+          </div>
+          <div class="dialogs-list__item-tag"></div>
+        </div>
+        <div class="dialogs-list__item">
+          <div class="dialogs-list__item-avatar"></div>
+          <div class="dialogs-list__item-content">
+            <div class="dialogs-list__item-name">John</div>
+            <div class="dialogs-list__item-time">09:55</div>
+            <div class="dialogs-list__item-message">{{ message | messagePreview}}</div>
+          </div>
+          <div class="dialogs-list__item-tag"></div>
+        </div>
+        <div class="dialogs-list__item">
+          <div class="dialogs-list__item-avatar"></div>
+          <div class="dialogs-list__item-content">
+            <div class="dialogs-list__item-name">John</div>
+            <div class="dialogs-list__item-time">09:55</div>
+            <div class="dialogs-list__item-message">{{ message | messagePreview}}</div>
+          </div>
+          <div class="dialogs-list__item-tag"></div>
+        </div>
+        <div class="dialogs-list__item">
+          <div class="dialogs-list__item-avatar"></div>
+          <div class="dialogs-list__item-content">
+            <div class="dialogs-list__item-name">John</div>
+            <div class="dialogs-list__item-time">09:55</div>
+            <div class="dialogs-list__item-message">{{ message | messagePreview}}</div>
+          </div>
+          <div class="dialogs-list__item-tag"></div>
+        </div>
+        <div class="dialogs-list__item">
+          <div class="dialogs-list__item-avatar"></div>
+          <div class="dialogs-list__item-content">
+            <div class="dialogs-list__item-name">John</div>
+            <div class="dialogs-list__item-time">09:55</div>
+            <div class="dialogs-list__item-message">{{ message | messagePreview}}</div>
+          </div>
+          <div class="dialogs-list__item-tag"></div>
+        </div>
+        <div class="dialogs-list__item">
+          <div class="dialogs-list__item-avatar"></div>
+          <div class="dialogs-list__item-content">
+            <div class="dialogs-list__item-name">John</div>
+            <div class="dialogs-list__item-time">09:55</div>
+            <div class="dialogs-list__item-message">{{ message | messagePreview}}</div>
+          </div>
+          <div class="dialogs-list__item-tag"></div>
+        </div>
+        <div class="dialogs-list__item">
+          <div class="dialogs-list__item-avatar"></div>
+          <div class="dialogs-list__item-content">
+            <div class="dialogs-list__item-name">John</div>
+            <div class="dialogs-list__item-time">09:55</div>
+            <div class="dialogs-list__item-message">{{ message | messagePreview}}</div>
+          </div>
+          <div class="dialogs-list__item-tag"></div>
+        </div>
+        <div class="dialogs-list__item">
+          <div class="dialogs-list__item-avatar"></div>
+          <div class="dialogs-list__item-content">
+            <div class="dialogs-list__item-name">John</div>
+            <div class="dialogs-list__item-time">09:55</div>
+            <div class="dialogs-list__item-message">{{ message | messagePreview}}</div>
+          </div>
+          <div class="dialogs-list__item-tag"></div>
+        </div>
       </div>
     </section>
     <section class="dialog">
@@ -64,19 +154,55 @@
             В своём изначальном понимании греческий термин «космос» (порядок, мироустройство) имел философскую основу, определяя гипотетический замкнутый вакуум вокруг Земли — центра Вселенной[1]. Тем не менее, в языках на латинской основе и её заимствованиях к одинаковой семантике применяют практический термин «пространство» (так как с научной точки зрения обволакивающий Землю вакуум бесконечен), поэтому в русском и близких ему языках в результате реформенной корректировки родился своеобразный оксюморон «космическое пространство».
           </div>
         </div>
+        <div class="dialog-message dialog-message_in">
+          <div class="dialog-message__avatar"></div>
+          <div class="dialog-message__content">
+            Этимология
+            В своём изначальном понимании греческий термин «космос» (порядок, мироустройство) имел философскую основу, определяя гипотетический замкнутый вакуум вокруг Земли — центра Вселенной[1]. Тем не менее, в языках на латинской основе и её заимствованиях к одинаковой семантике применяют практический термин «пространство» (так как с научной точки зрения обволакивающий Землю вакуум бесконечен), поэтому в русском и близких ему языках в результате реформенной корректировки родился своеобразный оксюморон «космическое пространство».
+          </div>
+        </div>
         <div class="dialog-message dialog-message_out">
           <div class="dialog-message__avatar"></div>
           <div
             class="dialog-message__content"
           >Чёткой границы не существует, атмосфера разрежается постепенно по мере удаления от земной поверхности, и до сих пор нет единого мнения, что считать фактором начала космоса. Если бы температура была постоянной, то давление бы изменялось по экспоненциальному закону от 100 кПа на уровне моря до нуля. Международная авиационная федерация в качестве рабочей границы между атмосферой и космосом установила высоту в 100 км (линия Кармана), потому что на этой высоте для создания подъёмной аэродинамической силы необходимо, чтобы летательный аппарат двигался с первой космической скоростью, из-за чего теряется смысл авиаполёта[2][3][4][5].</div>
         </div>
+        <div class="dialog-message dialog-message_in">
+          <div class="dialog-message__avatar"></div>
+          <div class="dialog-message__content">
+            Этимология
+            В своём изначальном понимании греческий термин «космос» (порядок, мироустройство) имел философскую основу, определяя гипотетический замкнутый вакуум вокруг Земли — центра Вселенной[1]. Тем не менее, в языках на латинской основе и её заимствованиях к одинаковой семантике применяют практический термин «пространство» (так как с научной точки зрения обволакивающий Землю вакуум бесконечен), поэтому в русском и близких ему языках в результате реформенной корректировки родился своеобразный оксюморон «космическое пространство».
+          </div>
+        </div>
+        <div class="dialog-message dialog-message_out">
+          <div class="dialog-message__avatar"></div>
+          <div
+            class="dialog-message__content"
+          >Чёткой границы не существует, атмосфера разрежается постепенно по мере удаления от земной поверхности, и до сих пор нет единого мнения, что считать фактором начала космоса. Если бы температура была постоянной, то давление бы изменялось по экспоненциальному закону от 100 кПа на уровне моря до нуля. Международная авиационная федерация в качестве рабочей границы между атмосферой и космосом установила высоту в 100 км (линия Кармана), потому что на этой высоте для создания подъёмной аэродинамической силы необходимо, чтобы летательный аппарат двигался с первой космической скоростью, из-за чего теряется смысл авиаполёта[2][3][4][5].</div>
+        </div>
+        <div class="dialog-message dialog-message_out">
+          <div class="dialog-message__avatar"></div>
+          <div
+            class="dialog-message__content"
+          >Чёткой границы не существует, атмосфера разрежается постепенно по мере удаления от земной поверхности, и до сих пор нет единого мнения, что считать фактором начала космоса. Если бы температура была постоянной, то давление бы изменялось по экспоненциальному закону от 100 кПа на уровне моря до нуля. Международная авиационная федерация в качестве рабочей границы между атмосферой и космосом установила высоту в 100 км (линия Кармана), потому что на этой высоте для создания подъёмной аэродинамической силы необходимо, чтобы летательный аппарат двигался с первой космической скоростью, из-за чего теряется смысл авиаполёта[2][3][4][5].</div>
+        </div>
+        <div class="dialog-message dialog-message_out">
+          <div class="dialog-message__avatar"></div>
+          <div
+            class="dialog-message__content"
+          >Чёткой границы не существует, атмосфера разрежается постепенно по мере удаления от земной поверхности, и до сих пор нет единого мнения, что считать фактором начала космоса. Если бы температура была постоянной, то давление бы изменялось по экспоненциальному закону от 100 кПа на уровне моря до нуля. Международная авиационная федерация в качестве рабочей границы между атмосферой и космосом установила высоту в 100 км (линия Кармана), потому что на этой высоте для создания подъёмной аэродинамической силы необходимо, чтобы летательный аппарат двигался с первой космической скоростью, из-за чего теряется смысл авиаполёта[2][3][4][5].</div>
+        </div>
+        <div class="dialog-message dialog-message_in">
+          <div class="dialog-message__avatar"></div>
+          <div class="dialog-message__content">
+            Этимология
+            В своём изначальном понимании греческий термин «космос» (порядок, мироустройство) имел философскую основу, определяя гипотетический замкнутый вакуум вокруг Земли — центра Вселенной[1]. Тем не менее, в языках на латинской основе и её заимствованиях к одинаковой семантике применяют практический термин «пространство» (так как с научной точки зрения обволакивающий Землю вакуум бесконечен), поэтому в русском и близких ему языках в результате реформенной корректировки родился своеобразный оксюморон «космическое пространство».
+          </div>
+        </div>
       </div>
       <div class="dialog-input">
         <textarea class="dialog-input__text-field" placeholder="Write something..."></textarea>
-        <div class="dialog-input__file">
-          <input type="file" class="dialog-input__file-real">
-          <div class="dialog-input__file-fake"></div>
-        </div>
+
         <div class="dialog-input__tools"></div>
       </div>
     </section>
@@ -115,7 +241,7 @@ export default {
   &-bar {
     display: flex;
     height: 100%;
-    max-height: 100px;
+    max-height: 70px;
     align-items: center;
     padding: 0px 0 0px 25px;
     border-bottom: 1px solid #ededed;
@@ -131,7 +257,7 @@ export default {
       background-position: 10px 7px;
       font-weight: 100;
       font-size: 16px;
-      color: #9da3c4;
+      color: #2f3640;
 
       &::placeholder {
         color: #c7cde8;
@@ -156,9 +282,6 @@ export default {
 
     &_in {
       .dialog-message {
-        &__triangle {
-          left: -100px;
-        }
         &__avatar {
           margin: 0 20px 0 0;
         }
@@ -167,12 +290,6 @@ export default {
     &_out {
       flex-direction: row-reverse;
       .dialog-message {
-        &__triangle {
-          transform: rotate(135deg);
-          z-index: 2;
-          top: -15px;
-          right: -100px;
-        }
         &__avatar {
           margin: 0 0 0 20px;
         }
@@ -186,26 +303,6 @@ export default {
       background-color: #fff;
       margin: 0 30px 0 0;
       box-shadow: 0px 0px 15px 2px rgba(#bcc7ee, 0.4);
-    }
-    &__triangle {
-      width: 100px;
-      height: 100px;
-      position: absolute;
-      overflow: hidden;
-      transform: rotate(-45deg);
-      z-index: 2;
-      top: -15px;
-      &::after {
-        content: "";
-        position: absolute;
-        width: 35px;
-        height: 35px;
-        background: #fff;
-        transform: rotate(-90deg); /* Не забываем про префиксы */
-        top: 71px;
-        left: 71px;
-        box-shadow: 0px 0px 15px 2px rgba(#bcc7ee, 0.4);
-      }
     }
     &__content {
       position: relative;
@@ -221,7 +318,7 @@ export default {
   &-input {
     border-top: 1px solid #ededed;
     padding: 10px 0 0 25px;
-    height: 280px;
+    height: 145px;
     position: relative;
 
     &__file {
@@ -252,7 +349,7 @@ export default {
       outline: none;
       border: none;
       width: 90%;
-      max-height: 170px;
+      max-height: 125px;
       height: 100%;
       font-family: "Proxima";
       font-size: 16px;
@@ -305,7 +402,7 @@ export default {
   overflow-y: hidden;
 
   &__items {
-    max-height: calc(100vh - 126px);
+    max-height: calc(100vh - 71px);
     overflow-y: scroll;
     &::-webkit-scrollbar {
       width: 0px;
@@ -318,6 +415,9 @@ export default {
     position: relative;
     cursor: pointer;
     transition: all ease 0.4s;
+    &:first-of-type {
+      padding: 40px 25px 20px 25px;
+    }
     &:hover {
       background-color: #fff;
       box-shadow: 0px 0px 15px 2px rgba(#bcc7ee, 0.4);
@@ -365,7 +465,7 @@ export default {
   &__tags {
     display: flex;
     height: 100%;
-    max-height: 100px;
+    max-height: 70px;
     align-items: center;
     padding: 0px 0 0px 25px;
     border-bottom: 1px solid #d9d9da;
