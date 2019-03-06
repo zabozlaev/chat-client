@@ -60,14 +60,15 @@
         <div class="dialog-message dialog-message_in">
           <div class="dialog-message__avatar"></div>
           <div class="dialog-message__content">
-            <div class="dialog-message__triangle"></div>Hello
+            Этимология
+            В своём изначальном понимании греческий термин «космос» (порядок, мироустройство) имел философскую основу, определяя гипотетический замкнутый вакуум вокруг Земли — центра Вселенной[1]. Тем не менее, в языках на латинской основе и её заимствованиях к одинаковой семантике применяют практический термин «пространство» (так как с научной точки зрения обволакивающий Землю вакуум бесконечен), поэтому в русском и близких ему языках в результате реформенной корректировки родился своеобразный оксюморон «космическое пространство».
           </div>
         </div>
         <div class="dialog-message dialog-message_out">
           <div class="dialog-message__avatar"></div>
-          <div class="dialog-message__content">
-            <div class="dialog-message__triangle"></div>Privet
-          </div>
+          <div
+            class="dialog-message__content"
+          >Чёткой границы не существует, атмосфера разрежается постепенно по мере удаления от земной поверхности, и до сих пор нет единого мнения, что считать фактором начала космоса. Если бы температура была постоянной, то давление бы изменялось по экспоненциальному закону от 100 кПа на уровне моря до нуля. Международная авиационная федерация в качестве рабочей границы между атмосферой и космосом установила высоту в 100 км (линия Кармана), потому что на этой высоте для создания подъёмной аэродинамической силы необходимо, чтобы летательный аппарат двигался с первой космической скоростью, из-за чего теряется смысл авиаполёта[2][3][4][5].</div>
         </div>
       </div>
       <div class="dialog-input">
@@ -112,20 +113,24 @@ export default {
   flex-direction: column;
 
   &-bar {
-    padding: 29px 0 27px 90px;
+    display: flex;
+    height: 100%;
+    max-height: 100px;
+    align-items: center;
+    padding: 0px 0 0px 25px;
     border-bottom: 1px solid #ededed;
     &__search-input {
       background-color: #f3f5fd;
       border: none;
       outline: none;
-      padding: 20px 30px 20px 70px;
+      padding: 10px 30px 10px 50px;
       border-radius: 50px;
-      width: 340px;
+      width: 170px;
       background-image: url("../assets/icons/search.svg");
       background-repeat: no-repeat;
-      background-position: 27px 20px;
+      background-position: 10px 7px;
       font-weight: 100;
-      font-size: 25px;
+      font-size: 16px;
       color: #9da3c4;
 
       &::placeholder {
@@ -136,10 +141,8 @@ export default {
   &-messages {
     height: 850px;
     overflow-y: scroll;
-    padding: 0 50px;
-    color: #7a82b1;
-    display: flex;
-    flex-direction: column;
+    padding: 0 25px;
+    color: #2f3640;
 
     &::-webkit-scrollbar {
       width: 0px;
@@ -157,7 +160,7 @@ export default {
           left: -100px;
         }
         &__avatar {
-          margin: 0 50px 0 0;
+          margin: 0 20px 0 0;
         }
       }
     }
@@ -171,14 +174,14 @@ export default {
           right: -100px;
         }
         &__avatar {
-          margin: 0 0 0 50px;
+          margin: 0 0 0 20px;
         }
       }
     }
 
     &__avatar {
-      height: 70px;
-      min-width: 70px;
+      height: 50px;
+      min-width: 50px;
       border-radius: 50%;
       background-color: #fff;
       margin: 0 30px 0 0;
@@ -208,36 +211,38 @@ export default {
       position: relative;
       background-color: #fff;
       box-shadow: 0px 0px 15px 2px rgba(#bcc7ee, 0.4);
-      padding: 20px 40px;
+      padding: 10px 30px;
       border-radius: 5px;
-      line-height: 37px;
-      font-size: 25px;
+      line-height: 24px;
+      font-size: 16px;
     }
   }
 
   &-input {
     border-top: 1px solid #ededed;
-    padding: 40px 0 0 120px;
+    padding: 10px 0 0 25px;
     height: 280px;
     position: relative;
 
     &__file {
       position: absolute;
       right: 0;
+      top: 0px;
       &-fake {
-        width: 70px;
-        height: 70px;
+        width: 50px;
+        height: 50px;
         padding: 5px;
         background-color: #6692ff;
         background-image: url("../assets/icons/addFile.svg");
         background-repeat: no-repeat;
         background-position: center;
+        box-shadow: 0px 0px 15px 2px rgba(#bcc7ee, 0.4);
       }
       &-real {
         cursor: pointer;
         position: absolute;
-        width: 70px;
-        height: 70px;
+        width: 60px;
+        height: 60px;
         opacity: 0;
       }
     }
@@ -246,20 +251,23 @@ export default {
       resize: none;
       outline: none;
       border: none;
-      width: 950px;
-      max-height: 150px;
+      width: 90%;
+      max-height: 170px;
       height: 100%;
       font-family: "Proxima";
-      font-size: 30px;
+      font-size: 16px;
+      line-height: 24px;
       font-weight: 300;
       overflow-y: scroll;
+      padding: 0;
+      color: #2f3640;
 
       &::-webkit-scrollbar {
         width: 0px;
       }
 
       &::placeholder {
-        font-size: 30px;
+        font-size: 16px;
         font-weight: 300;
         color: #d7d9e6;
       }
@@ -291,7 +299,7 @@ export default {
 }
 
 .dialogs-list {
-  max-width: 530px;
+  max-width: 420px;
   width: 100%;
   background-color: #f4f6fb;
   overflow-y: hidden;
@@ -305,14 +313,20 @@ export default {
   }
 
   &__item {
-    padding: 45px 25px;
+    padding: 20px 25px;
     display: flex;
     position: relative;
+    cursor: pointer;
+    transition: all ease 0.4s;
+    &:hover {
+      background-color: #fff;
+      box-shadow: 0px 0px 15px 2px rgba(#bcc7ee, 0.4);
+    }
 
     &-tag {
       position: absolute;
-      height: 50px;
-      width: 7px;
+      height: 25px;
+      width: 5px;
       background-color: #fe7e7e;
       top: 20px;
       right: 0;
@@ -321,8 +335,8 @@ export default {
     }
 
     &-avatar {
-      height: 70px;
-      min-width: 70px;
+      height: 50px;
+      min-width: 50px;
       border-radius: 50%;
       background-color: #fff;
       margin: 0 20px 0 0;
@@ -330,46 +344,47 @@ export default {
     }
 
     &-name {
-      font-size: 30px;
+      font-size: 16px;
       font-weight: 700;
       color: #7b81a6;
     }
     &-time {
       font-weight: 300;
-      font-size: 25px;
+      font-size: 14px;
       color: #a6a2ad;
-      margin: 20px 0 30px 0;
+      margin: 10px 0 10px 0;
     }
 
     &-message {
-      color: #9da3c4;
-      font-size: 25px;
-      line-height: 35px;
+      color: #2f3640;
+      font-size: 16px;
+      line-height: 24px;
     }
   }
 
   &__tags {
     display: flex;
-
-    padding: 50px 0 50px 50px;
+    height: 100%;
+    max-height: 100px;
+    align-items: center;
+    padding: 0px 0 0px 25px;
     border-bottom: 1px solid #d9d9da;
   }
   &__tag {
     color: #656b92;
-    font-size: 25px;
+    font-size: 16px;
     font-weight: 400;
-
+    cursor: pointer;
     margin: 0 60px 0 0;
-
     &::before {
       content: "";
-      height: 15px;
-      width: 15px;
+      height: 10px;
+      width: 10px;
       display: inline-block;
-      margin: 0 20px 0 0;
+      margin: 0 10px 0 0;
       border-radius: 50%;
       background-color: #fb787a;
-      box-shadow: 3px 3px 7px 2px rgba(#fb787a, 0.4);
+      box-shadow: 3px 3px 7px 0 rgba(#fb787a, 0.4);
     }
   }
 }

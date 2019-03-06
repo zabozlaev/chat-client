@@ -26,7 +26,9 @@ export default {};
 .user {
   display: flex;
   align-items: center;
-  padding: 25px 40px 45px 40px;
+  padding: 0 0 0 25px;
+  height: 100%;
+  max-height: 100px;
 
   &__avatar {
     border-radius: 50%;
@@ -51,11 +53,11 @@ export default {};
     background-color: #4977f0;
   }
   &-item {
-    padding: 40px;
+    padding: 25px;
     display: flex;
     align-items: center;
     transition: all 0.5s ease;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
 
     &:hover {
@@ -90,11 +92,17 @@ export default {};
       }
     }
     &_logout {
+      &:hover {
+        background-color: #ed5f55;
+      }
       &::before {
         content: url("../assets/icons/logout.svg");
       }
     }
     &_help {
+      &:hover {
+        background-color: #fcce54;
+      }
       &::before {
         content: url("../assets/icons/help.svg");
       }
