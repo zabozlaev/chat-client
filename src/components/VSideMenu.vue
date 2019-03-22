@@ -1,25 +1,83 @@
 <template>
   <div class="menu">
     <div class="user">
-      <div class="user__avatar"></div>
-      <div class="user__name">coder</div>
+      <div class="user__avatar" :style="{'background-image':'url('+ avatarUrl +')'}"></div>
+      <div class="user__name">{{username}}</div>
     </div>
-    <div class="nav">
-      <router-link to="/time" exact class="nav-item nav-item_time">Timeline</router-link>
-      <router-link to="/chat" class="nav-item nav-item_message">Message</router-link>
-      <router-link to="/asdad" class="nav-item nav-item_contacts">Contacts</router-link>
-      <router-link to="/asdasd" class="nav-item nav-item_deleted">Deleted</router-link>
-      <router-link to="/asdasdasdas" class="nav-item nav-item_settings">Settings</router-link>
+    <div class="nav" v-for="(link, idx) in links" :key="idx">
+      <router-link
+        :to="link.to"
+        v-show="link.title === 'Login' || link.title === 'Register' ? !isLoggedIn : isLoggedIn "
+        :class="`nav-item nav-item_${link.class}`"
+      >{{link.title}}</router-link>
     </div>
     <div class="nav nav_extra">
-      <router-link to="/asdasdasd" class="nav-item nav-item_logout">Logout</router-link>
-      <router-link to="/asdasdasdadsd" class="nav-item nav-item_help">Help</router-link>
+      <router-link to="/logout" v-show="isLoggedIn" class="nav-item nav-item_logout">Logout</router-link>
+      <router-link to="/help" class="nav-item nav-item_help">Help</router-link>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import { mapGetters, mapActions } from "vuex";
+
+export default {
+  data() {
+    return {
+      links: [
+        {
+          to: "/stats",
+          title: "Stats",
+
+          class: "stats"
+        },
+        {
+          to: "/login",
+          title: "Login",
+          class: "login"
+        },
+        {
+          to: "/chat",
+          title: "Message",
+          class: "chat"
+        },
+        {
+          to: "/invites",
+          title: "Invites",
+          class: "invites"
+        },
+        {
+          to: "/settings",
+          title: "Settings",
+          class: "settings"
+        },
+        {
+          to: "/register",
+          title: "Register",
+          class: "register"
+        },
+        {
+          to: "/create",
+          title: "Create",
+          class: "create"
+        }
+      ]
+    };
+  },
+
+  methods: {
+    ...mapActions(["me"])
+  },
+
+  computed: {
+    ...mapGetters(["isLoggedIn", "username", "avatarUrl"])
+  },
+
+  mounted() {
+    const { me } = this;
+    me();
+  }
+};
 </script>
 
 <style lang="scss">

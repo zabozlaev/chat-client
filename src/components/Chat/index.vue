@@ -1,54 +1,102 @@
 <template>
-  <main class="page-chat">
-    <DialogList :channels="channels"/>
-    <Chat :username="username" :channelId="currentChannel.id"/>
-  </main>
+  <section class="dialog">
+    <div class="dialog-bar">
+      <input type="text" class="dialog-bar__search-input" placeholder="Search Message">
+    </div>
+    <div class="dialog-messages">
+      <div
+        class="dialog-message"
+        :class="message.author.username === username ? 'dialog-message_out': 'dialog-message_in'"
+        v-for="(message, index) in messages"
+        :key="index"
+      >
+        <div
+          class="dialog-message__avatar"
+          :style="{'background-image': 'url('+message.author.avatarUrl+')'}"
+        ></div>
+        <div class="dialog-message__content">
+          <div class="dialog-message__text">{{message.text}}</div>
+          <div class="dialog-message__date">{{message.created | dateFromNow}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="dialog-input">
+      <textarea
+        class="dialog-input__text-field"
+        @keypress.13="handleCreateMessage"
+        v-model="text"
+        placeholder="Write something..."
+      ></textarea>
+      <div class="dialog-input__tools"></div>
+    </div>
+  </section>
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
-import Chat from "../components/Chat";
-import DialogList from "../components/Dialogs";
-import { close } from "fs";
+import { mapGetters, mapActions } from "vuex";
+
+import { MESSAGE_SUBSCRIPTION } from "./types";
+
+import { MESSAGES_QUERY } from "../../store/modules/messages/types.js";
 
 export default {
-  components: {
-    Chat,
-    DialogList
-  },
+  props: ["channelId"],
   data() {
     return {
-      message: "asdasd"
+      text: ""
     };
   },
-  filters: {
-    messagePreview(message) {
-      return message.length < 50 ? message : `${message.slice(0, 49)}...`;
+
+  apollo: {
+    newChannelMessage: {
+      subscribeToMore: {
+        document: MESSAGE_SUBSCRIPTION,
+        // Variables passed to the subscription. Since we're using a function,
+        // they are reactive
+        variables() {
+          return {
+            channelId: this.channelId || 1
+          };
+        },
+        // Mutate the previous result
+        updateQuery: (previousResult, { subscriptionData }) => {
+          // Here, return the new result from the previous with the new data
+          console.log(subscriptionData);
+        }
+      }
     }
   },
-  methods: {
-    scrollBottomOnMessage() {},
-    ...mapActions(["loadChannels", "loadMessages", "me"]),
-    handleMessageLoad() {
-      if (this.channels.length === 0) return;
 
-      this.loadMessages({ channelId: this.channels[0].id });
-    }
+  methods: {
+    scrollBottom() {
+      const container = this.$el.querySelector(".dialog-messages");
+      container.scrollTop = container.scrollHeight;
+    },
+    handleCreateMessage() {
+      const { createMessage, text, currentChannel } = this;
+      if (text.trim().length === 0) return;
+      createMessage({ text, channelId: currentChannel.id });
+      this.text = "";
+    },
+    ...mapActions(["createMessage"])
   },
   computed: {
-    ...mapGetters(["channels", "messages", "username", "currentChannel"])
+    ...mapGetters(["messages", "username", "currentChannel"])
   },
-
-  mounted() {
-    this.loadChannels();
-    this.handleMessageLoad();
+  updated() {
+    this.scrollBottom();
   }
 };
 </script>
 
 <style lang="scss">
-// dialog
-/* .dialog {
+.dialogs__empty {
+  &-message {
+    padding: 20px;
+    text-align: center;
+  }
+}
+.dialog {
   height: 100vh;
   overflow-y: hidden;
   width: 100%;
@@ -69,7 +117,7 @@ export default {
       padding: 10px 30px 10px 50px;
       border-radius: 50px;
       width: 170px;
-      background-image: url("../assets/icons/search.svg");
+      /* background-image: url("../assets/icons/search.svg"); */
       background-repeat: no-repeat;
       background-position: 10px 7px;
       font-weight: 100;
@@ -86,7 +134,6 @@ export default {
     overflow-y: scroll;
     padding: 0 25px;
     color: #2f3640;
-
     &::-webkit-scrollbar {
       width: 0px;
     }
@@ -147,7 +194,7 @@ export default {
         height: 50px;
         padding: 5px;
         background-color: #6692ff;
-        background-image: url("../assets/icons/addFile.svg");
+        /* background-image: url("../assets/icons/addFile.svg"); */
         background-repeat: no-repeat;
         background-position: center;
         box-shadow: 0px 0px 15px 2px rgba(#bcc7ee, 0.4);
@@ -204,105 +251,10 @@ export default {
     }
   }
 }
-// end
 
 .page-chat {
   height: 100vh;
   width: 100%;
   display: flex;
 }
-
-.dialogs-list {
-  max-width: 420px;
-  width: 100%;
-  background-color: #f4f6fb;
-  overflow-y: hidden;
-
-  &__items {
-    max-height: calc(100vh - 71px);
-    overflow-y: scroll;
-    &::-webkit-scrollbar {
-      width: 0px;
-    }
-  }
-
-  &__item {
-    padding: 20px 25px;
-    display: flex;
-    position: relative;
-    cursor: pointer;
-    transition: all ease 0.4s;
-    &:first-of-type {
-      padding: 40px 25px 20px 25px;
-    }
-    &:hover {
-      background-color: #fff;
-      box-shadow: 0px 0px 15px 2px rgba(#bcc7ee, 0.4);
-    }
-
-    &-tag {
-      position: absolute;
-      height: 25px;
-      width: 5px;
-      background-color: #fe7e7e;
-      top: 20px;
-      right: 0;
-
-      box-shadow: 0px 0px 15px 2px rgba(#fe7e7e, 0.4);
-    }
-
-    &-avatar {
-      height: 50px;
-      min-width: 50px;
-      border-radius: 50%;
-      background-color: #fff;
-      margin: 0 20px 0 0;
-      box-shadow: 0px 0px 15px 2px rgba(#bcc7ee, 0.4);
-    }
-
-    &-name {
-      font-size: 16px;
-      font-weight: 700;
-      color: #7b81a6;
-    }
-    &-time {
-      font-weight: 300;
-      font-size: 14px;
-      color: #a6a2ad;
-      margin: 10px 0 10px 0;
-    }
-
-    &-message {
-      color: #2f3640;
-      font-size: 16px;
-      line-height: 24px;
-    }
-  }
-
-  &__tags {
-    display: flex;
-    height: 100%;
-    max-height: 70px;
-    align-items: center;
-    padding: 0px 0 0px 25px;
-    border-bottom: 1px solid #d9d9da;
-  }
-  &__tag {
-    color: #656b92;
-    font-size: 16px;
-    font-weight: 400;
-    cursor: pointer;
-    margin: 0 60px 0 0;
-    &::before {
-      content: "";
-      height: 10px;
-      width: 10px;
-      display: inline-block;
-      margin: 0 10px 0 0;
-      border-radius: 50%;
-      background-color: #fb787a;
-      box-shadow: 3px 3px 7px 0 rgba(#fb787a, 0.4);
-    }
-  }
-} */
 </style>

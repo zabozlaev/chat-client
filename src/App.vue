@@ -7,6 +7,7 @@
 
 <script>
 import SideMenu from "./components/VSideMenu.vue";
+import { mapMutations } from "vuex";
 
 export default {
   components: {
