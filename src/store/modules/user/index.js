@@ -1,9 +1,16 @@
 import { apolloClient, gqlMutation, gqlQuery } from "../../../graphql";
-import { REGISTER_MUTATION, LOGIN_MUTATION, ME_QUERY } from "./types.js";
+import {
+  REGISTER_MUTATION,
+  LOGIN_MUTATION,
+  ME_QUERY,
+  LOGOUT_MUTATION
+} from "./types.js";
 
 export default {
   state: {
-    isLoggedIn: localStorage.getItem("accessToken").length > 0,
+    isLoggedIn: localStorage.getItem("accessToken")
+      ? localStorage.getItem("accessToken").length > 0
+      : false,
     username: null,
     email: null,
     registerErrors: [],
@@ -39,6 +46,10 @@ export default {
     },
     avatarUrl(state, data) {
       state.avatarUrl = data;
+    },
+    me(state, { avatarUrl, username }) {
+      state.avatarUrl = avatarUrl;
+      state.username = username;
     }
   },
   actions: {
@@ -54,7 +65,7 @@ export default {
     async login({ commit }, data) {
       const {
         data: {
-          login: { accessToken, refreshToken, errors }
+          login: { accessToken, refreshToken, errors, user }
         }
       } = await gqlMutation(LOGIN_MUTATION, data);
       if (errors) {
@@ -62,14 +73,13 @@ export default {
         return commit("loginErrors", errors);
       }
 
-      console.log(accessToken);
-
       localStorage.setItem("accessToken", `Bearer ${accessToken}`);
-      localStorage.setItem("refreshToken", `Refresh ${refreshToken}`);
+      localStorage.setItem("refreshToken", refreshToken);
       commit("toggleLoggedIn", true);
+      commit("me", user);
     },
     async me({ commit, state }) {
-      if (state.username) return;
+      // if (!state.loggedIn || state.username) return;
       const {
         data: {
           me: { username, avatarUrl }
@@ -77,6 +87,19 @@ export default {
       } = await gqlQuery(ME_QUERY);
       commit("username", username);
       commit("avatarUrl", avatarUrl);
+    },
+    async logout({ commit, state }) {
+      const refreshToken = localStorage.getItem("refreshToken");
+      if (!state.loggedIn || !refreshToken || refreshToken.trim().length < 1) {
+        return;
+      }
+
+      const {
+        data: { logout }
+      } = await gqlMutation(LOGOUT_MUTATION, { refreshToken });
+      console.log(logout);
+      localStorage.removeItem("refreshToken");
+      localStorage.removeItem("accessToken");
     }
   }
 };

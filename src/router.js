@@ -6,6 +6,7 @@ import Chat from "./views/Chat.vue";
 import Login from "./views/Login.vue";
 import Register from "./views/Register.vue";
 import Create from "./views/Create.vue";
+import Invites from "./views/Invites.vue";
 
 Vue.use(Router);
 
@@ -37,6 +38,11 @@ export default new Router({
       path: "/create",
       name: "create",
       component: Create
+    },
+    {
+      path: "/invites",
+      name: "invites",
+      component: Invites
     }
   ]
 });

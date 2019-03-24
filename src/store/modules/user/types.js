@@ -21,6 +21,10 @@ export const LOGIN_MUTATION = gql`
         path
         message
       }
+      user {
+        username
+        avatarUrl
+      }
     }
   }
 `;
@@ -30,6 +34,14 @@ export const ME_QUERY = gql`
     me {
       username
       avatarUrl
+    }
+  }
+`;
+
+export const LOGOUT_MUTATION = gql`
+  mutation($refreshToken: String!) {
+    logout(refreshToken: $refreshToken) {
+      success
     }
   }
 `;

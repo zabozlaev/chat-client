@@ -28,7 +28,7 @@ export default {
       } = await gqlQuery(CHANNELS_QUERY);
       console.log(getChannels);
       commit("channels", getChannels);
-      commit("selectCurrentChannel", getChannels[0]);
+      commit("selectCurrentChannel", getChannels[0] || []);
     },
     async createChannel({ commit }, data) {
       const {

@@ -20,3 +20,21 @@ export const CREATE_MESSAGE_MUTATION = gql`
     }
   }
 `;
+
+export const SEARCH_MESSAGE_QUERY = gql`
+  query($channelId: Int!, $searchQueryString: String!) {
+    searchMessages(
+      channelId: $channelId
+      searchQueryString: $searchQueryString
+    ) {
+      messages {
+        text
+        author {
+          username
+          avatarUrl
+        }
+        created
+      }
+    }
+  }
+`;

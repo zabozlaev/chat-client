@@ -12,7 +12,11 @@
       >{{link.title}}</router-link>
     </div>
     <div class="nav nav_extra">
-      <router-link to="/logout" v-show="isLoggedIn" class="nav-item nav-item_logout">Logout</router-link>
+      <button
+        v-show="isLoggedIn"
+        class="button nav-item nav-item_logout"
+        @click="handleLogout"
+      >Logout</button>
       <router-link to="/help" class="nav-item nav-item_help">Help</router-link>
     </div>
   </div>
@@ -66,7 +70,12 @@ export default {
   },
 
   methods: {
-    ...mapActions(["me"])
+    handleLogout() {
+      const { logout, $router } = this;
+      logout();
+      $router.go();
+    },
+    ...mapActions(["me", "logout"])
   },
 
   computed: {

@@ -1,7 +1,7 @@
 <template>
   <main class="page-chat">
     <DialogList :channels="channels"/>
-    <Chat :username="username" :channelId="currentChannel.id"/>
+    <Chat :username="username" :channelId="currentChannel ? currentChannel.id : null"/>
   </main>
 </template>
 
@@ -30,9 +30,11 @@ export default {
     scrollBottomOnMessage() {},
     ...mapActions(["loadChannels", "loadMessages", "me"]),
     handleMessageLoad() {
-      if (this.channels.length === 0) return;
+      if (this.channels.length === 0 || !this.channels[0]) return;
 
-      this.loadMessages({ channelId: this.channels[0].id });
+      setImmediate(() =>
+        this.loadMessages({ channelId: this.currentChannel.id })
+      );
     }
   },
   computed: {

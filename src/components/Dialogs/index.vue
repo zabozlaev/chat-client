@@ -3,21 +3,21 @@
     <div class="dialogs-list__tags">
       <div class="dialogs-list__tag">Family</div>
     </div>
-    <div
-      class="dialogs-list__items"
-      v-show="channels.length !== 0"
-      v-for="(channel, idx) in channels"
-      :key="idx"
-    >
+    <div class="dialogs-list__items">
       <div
         class="dialogs-list__item"
         @click="switchChannel(channel)"
-        :class="currentChannel && channel.id === currentChannel.id ? 'dialogs-list__item_active': ''"
+        :class="currentChannel  && channel.id === currentChannel.id ? 'dialogs-list__item_active': ''"
+        v-show="channels.length !== 0"
+        v-for="(channel, idx) in channels"
+        :key="idx"
       >
         <div class="dialogs-list__item-avatar"></div>
         <div class="dialogs-list__item-content">
-          <div class="dialogs-list__item-name">{{channel.name}}</div>
-          <div class="dialogs-list__item-time">09:55</div>
+          <div class="dialogs-list__item-info">
+            <div class="dialogs-list__item-name">{{channel.name}}</div>
+            <div class="dialogs-list__item-time">09:55</div>
+          </div>
           <div class="dialogs-list__item-message">123123</div>
         </div>
         <div class="dialogs-list__item-tag"></div>
@@ -70,9 +70,6 @@ export default {
     position: relative;
     cursor: pointer;
     transition: all ease 0.4s;
-    &:first-of-type {
-      padding: 40px 25px 20px 25px;
-    }
     &:hover {
       background-color: #fff;
       box-shadow: 0px 0px 15px 2px rgba(#bcc7ee, 0.4);
@@ -81,6 +78,17 @@ export default {
     &_active {
       background-color: #fff;
       box-shadow: 0px 0px 15px 2px rgba(#bcc7ee, 0.4);
+    }
+
+    &-content {
+      width: 100%;
+    }
+
+    &-info {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 0 10px 0;
+      width: 100%;
     }
 
     &-tag {
@@ -112,7 +120,6 @@ export default {
       font-weight: 300;
       font-size: 14px;
       color: #a6a2ad;
-      margin: 10px 0 10px 0;
     }
 
     &_message {

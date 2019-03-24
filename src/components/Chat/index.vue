@@ -1,7 +1,12 @@
 <template>
-  <section class="dialog">
+  <section class="dialog" v-show="channelId">
     <div class="dialog-bar">
-      <input type="text" class="dialog-bar__search-input" placeholder="Search Message">
+      <input
+        type="text"
+        class="dialog-bar__search-input"
+        v-model="searchQueryString"
+        placeholder="Search Message"
+      >
     </div>
     <div class="dialog-messages">
       <div
@@ -33,40 +38,53 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters, mapActions, mapMutations } from "vuex";
 
 import { MESSAGE_SUBSCRIPTION } from "./types";
 
 import { MESSAGES_QUERY } from "../../store/modules/messages/types.js";
 
+import lodash from "lodash";
+const _ = new lodash();
+import { gqlQuery } from "../../graphql";
+
 export default {
   props: ["channelId"],
   data() {
     return {
-      text: ""
+      text: "",
+      searchQueryString: ""
     };
   },
-
+  computed: {
+    ...mapGetters(["messages", "username", "currentChannel"])
+  },
   apollo: {
-    newChannelMessage: {
-      subscribeToMore: {
-        document: MESSAGE_SUBSCRIPTION,
-        // Variables passed to the subscription. Since we're using a function,
-        // they are reactive
+    getMessages() {
+      if (!this.currentChannel) return;
+      return {
+        query: MESSAGES_QUERY,
         variables() {
           return {
-            channelId: this.channelId || 1
+            channelId: this.currentChannel.id
           };
         },
-        // Mutate the previous result
-        updateQuery: (previousResult, { subscriptionData }) => {
-          // Here, return the new result from the previous with the new data
-          console.log(subscriptionData);
+        subscribeToMore: {
+          document: MESSAGE_SUBSCRIPTION,
+          variables() {
+            return {
+              channelId: this.currentChannel.id
+            };
+          },
+          updateQuery(previousResult, { subscriptionData }) {
+            // Here, return the new result from the previous with the new data
+            console.log(subscriptionData.data.newChannelMessage);
+            this.updateMessages(subscriptionData.data.newChannelMessage);
+          }
         }
-      }
+      };
     }
   },
-
   methods: {
     scrollBottom() {
       const container = this.$el.querySelector(".dialog-messages");
@@ -74,17 +92,27 @@ export default {
     },
     handleCreateMessage() {
       const { createMessage, text, currentChannel } = this;
-      if (text.trim().length === 0) return;
+      if (text.trim().length === 0 || !currentChannel) return;
       createMessage({ text, channelId: currentChannel.id });
       this.text = "";
     },
-    ...mapActions(["createMessage"])
-  },
-  computed: {
-    ...mapGetters(["messages", "username", "currentChannel"])
+    processSearch(searchQueryString) {
+      const { searchMessages, currentChannel } = this;
+      console.log("here");
+      if (!currentChannel) return;
+      _.debounce(() => console.log(searchQueryString), 500);
+    },
+    ...mapActions(["createMessage", "searchMessages", "loadMessages"]),
+    ...mapMutations(["updateMessages"])
   },
   updated() {
     this.scrollBottom();
+  },
+  watch: {
+    searchQueryString(data) {
+      if (data.length < 3) return;
+      this.processSearch(data);
+    }
   }
 };
 </script>
